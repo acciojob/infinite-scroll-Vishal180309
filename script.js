@@ -1,27 +1,22 @@
 //your code here!
-const listElement = document.getElementById("list");
 
-// Add 10 list items by default
-for (let i = 0; i < 10; i++) {
-    const listItem = document.createElement("li");
-    listItem.textContent = `Item ${i + 1}`;
-    listElement.appendChild(listItem);
-}
+let list_var = document.getElementById('infi-list');
+list_var.addEventListener('scroll',function (e) {
+    while((list_var.scrollTop + list_var.clientHeight) >= list_var.scrollHeight - 5) {
+        let innerList1 = document.createElement('li');
+        let innerList2 = document.createElement('li');
 
-// Function to add more list items
-function addMoreItems() {
-    for (let i = 0; i < 2; i++) {
-        const listItem = document.createElement("li");
-        listItem.textContent = `Item ${listElement.children.length + 1}`;
-        listElement.appendChild(listItem);
-    }
-}
+        // getting last no.
+        let last_list_number = list_var.lastElementChild;
+        let no_lln = parseInt(last_list_number.textContent);
 
-// Event listener to detect when user reaches the end of the list
-listElement.addEventListener("scroll", function() {
-    if (listElement.scrollTop + listElement.offsetHeight >= listElement.scrollHeight) {
-        addMoreItems();
+        // let ol_var = document.getElementById('infi-list');
+        
+        // adding continue numbers
+        innerList1.textContent=`${no_lln+1}`;
+        innerList2.textContent=`${no_lln+2}`;
+
+        list_var.appendChild(innerList1);
+        list_var.appendChild(innerList2);
     }
 });
-
-
